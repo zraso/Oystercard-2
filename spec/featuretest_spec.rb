@@ -1,4 +1,4 @@
-require '/Users/vijaykurian/Makers/oystercard/lib/oystercard.rb'
+require 'oystercard'
 
 oyster = Oystercard.new
 oyster.balance
