@@ -28,4 +28,23 @@ describe Oystercard do
       expect { oyster.top_up(1) }.to raise_error "Error: Cannot top up, balance exceeds Maximum Balance £#{Oystercard::MAX_BALANCE}"
     end
   end
+
+  describe 'journey status' do
+    it 'it tells us if the user is currently on a journey' do
+      oyster = Oystercard.new
+      expect(oyster.in_journey?).to eq false
+    end
+
+    it 'tells us if the user is currently touched in' do
+      oyster = Oystercard.new
+      oyster.touch_in
+      expect(oyster.in_journey?).to eq true
+    end
+
+    it 'tells us if the user is currently touched out' do
+      oyster = Oystercard.new
+      oyster.touch_out
+      expect(oyster.in_journey?).to eq false
+    end
+  end
 end
