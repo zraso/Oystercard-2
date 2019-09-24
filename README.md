@@ -20,3 +20,16 @@ I want a maximum limit (of £90) on my card`
 `How can you check an expression raises an error with RSpec? Why do you have to pass the code as a block to do this? --> FIND OUT`
 
 Objects | Messages
+
+`In order to pay for my journey
+As a customer
+I need my fare deducted from my card`
+
+Objects | Messages
+
+`In order to get through the barriers.
+As a customer
+I need to touch in and out.`
+
+Objects | Messages
+card    | touch_in, touch_out, in_journey?
