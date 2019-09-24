@@ -35,3 +35,9 @@ I need to touch in and out.`
 
 Objects | Messages
 card    | touch_in, touch_out, in_journey?
+
+`In order to pay for my journey
+As a customer
+I need to have the minimum amount (£1) for a single journey.`
+
+Objects | Messages
