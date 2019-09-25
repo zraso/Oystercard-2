@@ -16,7 +16,7 @@ class Oystercard
   end
 
   def in_journey?
-    @entry_station
+    @entry_station #alternatively use !!entry_station to make explicit that we are asking for a boolean
   end
 
   def touch_in(entry_station)

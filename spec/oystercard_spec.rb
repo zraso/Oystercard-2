@@ -47,7 +47,7 @@ describe Oystercard do
     it 'tells us if the user is currently touched in' do
       oyster.top_up(5) #min_balance step 9: added this line to pass min_balance test
       oyster.touch_in(entry_station)
-      expect(oyster.in_journey?).to eq entry_station
+      expect(oyster.in_journey?).to eq true
     end
 
     it 'records entry station' do
@@ -61,7 +61,7 @@ describe Oystercard do
   describe '#touch_out' do
     it 'tells us if the user is currently touched out' do
       oyster.touch_out
-      expect(oyster.in_journey?).to eq nil
+      expect(oyster.in_journey?).to eq false
     end
 
     it 'forgets entry station' do
@@ -74,7 +74,7 @@ describe Oystercard do
 
   #
   # describe '#in_journey?' do
-  #   it 'it tells us if a new card is currently on a journey' do
+  #   it 'it tells us if a new  is currently on a journey' do
   #     expect(oyster.in_journey?).to eq false
   #   end
   # end
