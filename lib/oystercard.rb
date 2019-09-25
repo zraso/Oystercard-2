@@ -23,19 +23,16 @@ class Oystercard
 
   def touch_in(entry_station)
     raise "Error: Cannot touch in, your balance is less than minimum balance £#{MIN_BALANCE}" if @balance < MIN_BALANCE
-    # @in_journey = true
-
+    # add_journey(entry_station)
     @entry_station = entry_station
-
-    @journey_history << {entry_station: @entry_station}
   end
 
   def touch_out(exit_station)
-    # @in_journey = false
+    @exit_station = exit_station
+    @journey_history << {entry_station: entry_station, exit_station: exit_station}
+    # add_journey(exit_station)
     deduct(MIN_BALANCE)
     @entry_station = nil
-    @exit_station = exit_station
-
   end
 
   private
@@ -43,8 +40,9 @@ class Oystercard
   def deduct(amount)
     @balance = @balance - amount
   end
-  # def balance
-  #   @balance
+
+  # def add_journey(station)
+  #   @journey_history << {entry_station: entry_station, exit_station: exit_station}
   # end
 
 end

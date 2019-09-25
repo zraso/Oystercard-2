@@ -33,14 +33,14 @@ describe Oystercard do
   end
 
   describe '#top_up' do
-    it 'throws an error if balance is greater than £90' do
+    it 'throws an error if balance is greater than maximum balance' do
       oyster.top_up(Oystercard::MAX_BALANCE)
       expect { oyster.top_up(1) }.to raise_error "Error: Cannot top up, balance exceeds Maximum Balance £#{Oystercard::MAX_BALANCE}"
     end
   end
 
   describe '#touch_in' do
-    it 'throws an error if balance is less than £1' do
+    it 'throws an error if balance is less than minimum balance' do
       oyster.top_up(0.40)
       expect { oyster.touch_in(entry_station) }.to raise_error "Error: Cannot touch in, your balance is less than minimum balance £#{Oystercard::MIN_BALANCE}"
     end
@@ -61,6 +61,8 @@ describe Oystercard do
 
   describe '#touch_out' do
     it 'tells us if the user is currently touched out' do
+      oyster.top_up(5)
+      oyster.touch_in(entry_station)
       oyster.touch_out(exit_station)
       expect(oyster.in_journey?).to eq false
     end
