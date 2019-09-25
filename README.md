@@ -53,3 +53,7 @@ As a customer
 I need to know where I've travelled from`
 
 Objects | Messages
+
+`In order to know where I have been
+As a customer
+I want to see all my previous trips`
