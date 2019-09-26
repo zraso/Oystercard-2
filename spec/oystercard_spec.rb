@@ -16,13 +16,6 @@ describe Oystercard do
         expect(oyster.balance).to eq 5
       end
 
-      # removed this test as deduct method is now private
-      # it 'deducts balance with given amount' do
-      #   oyster.top_up(10)
-      #   oyster.deduct(5)
-      #   expect(oyster.balance).to eq 5
-      # end
-
       it 'when touching out, minimum fare is deducted from balance' do
         oyster.top_up(5)
         oyster.touch_in(entry_station)
@@ -50,13 +43,6 @@ describe Oystercard do
       oyster.touch_in(entry_station)
       expect(oyster.in_journey?).to eq true
     end
-
-    it 'records entry station' do
-      oyster.top_up(5)
-      oyster.touch_in(entry_station)
-      expect(oyster.entry_station).to eq entry_station
-    end
-
   end
 
   describe '#touch_out' do
@@ -73,13 +59,6 @@ describe Oystercard do
       oyster.touch_out(exit_station)
       expect(oyster.entry_station).to eq nil
     end
-
-    it 'stores an exit station' do
-      oyster.top_up(5)
-      oyster.touch_in(entry_station)
-      oyster.touch_out(exit_station)
-      expect(oyster.exit_station).to eq exit_station
-    end
   end
 
   describe 'journeys' do
@@ -91,15 +70,8 @@ describe Oystercard do
       oyster.top_up(5)
       oyster.touch_in(entry_station)
       oyster.touch_out(exit_station)
+        #this is testing state
       expect(oyster.journey_history).to eq [{ entry_station: entry_station, exit_station: exit_station }]
     end
   end
-
-  #
-  # describe '#in_journey?' do
-  #   it 'it tells us if a new  is currently on a journey' do
-  #     expect(oyster.in_journey?).to eq false
-  #   end
-  # end
-
 end
