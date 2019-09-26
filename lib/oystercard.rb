@@ -4,10 +4,11 @@ class Oystercard
   MAX_BALANCE = 90
   MIN_BALANCE = 1
 
-  def initialize
+  def initialize(journey=Journey.new)
     @balance = 0
     @journey_history = []
     @in_journey = false
+    @journey = journey
   end
 
   def top_up(amount)
@@ -16,17 +17,17 @@ class Oystercard
   end
 
   def in_journey?
-    @in_journey
+    @journey.journey_status
   end
 
   def touch_in(entry_station)
-    @in_journey = true
+    @journey.start
     raise "Error: Cannot touch in, your balance is less than minimum balance £#{MIN_BALANCE}" if @balance < MIN_BALANCE
     add_journey(entry_station)
   end
 
   def touch_out(exit_station)
-    @in_journey = false
+    @journey.finish
     add_journey(exit_station)
     deduct(MIN_BALANCE)
   end
